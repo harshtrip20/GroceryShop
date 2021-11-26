@@ -1,0 +1,39 @@
+<div class="container">
+  <div *ngIf="cartProducts?.length==0" class="alert alert-danger">
+  <b>Cart is empty </b>
+  </div>
+<div class="row  row-cols-2">
+  <div *ngFor="let product of cartProducts; let i=index;">
+<br>
+    <div class="col-md-4">
+      <div class="card  h-100  hoverwell thumbnail border border-success" style="width: 30rem;">
+
+        <div class="book-desc-container ">
+
+          <div>Product Name : {{product?.name}} </div>
+          <div>Category : {{product?.category }} </div>
+          <!-- <div>Product Id : {{product?.productId }} </div> -->
+          <div>Product Price : {{product?.itemQuantityPrice | currency : 'INR' }} </div>
+
+<br>
+          <button class="btn btn-danger " (click)="removeFromCart(i)">Remove</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+ 
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <br>
+    <button class="btn btn-primary" (click)="proceedToBuy()" *ngIf="cartProducts?.length>0">Proceed To Buy</button>
+    </div>
+    <div class="col-md-2">
+      <br>
+      <button type="button"  class="btn btn-danger" (click)="cancel()" *ngIf="cartProducts?.length>0">Cancel</button>
+    </div>
+</div>

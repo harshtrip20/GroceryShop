@@ -1,0 +1,9 @@
+<hr/>
+  <div *ngIf="errors" class="alert alert-danger">
+                          {{errors.error.details}}
+  </div>
+  <div class="row row-cols-2" >
+    <!-- <div *ngFor="let customer of customers" > -->
+<app-customerlist   [newCustomer]=customer (callParent)="receieveDataFromChild($event)"></app-customerlist>
+<!-- </div> -->
+</div>

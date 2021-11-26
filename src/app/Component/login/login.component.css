@@ -1,0 +1,32 @@
+/* .bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+  }
+  
+  @media (min-width: 1025px) {
+    .h-custom-2 {
+      height: 100%;
+    }
+  } */
+
+  #conatiner {
+    /* background-color: red;
+    background-image: url("../../assets/marketplace2.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:  center;
+    height: 100vh;
+  }
+  
+  /* input {
+    width: 25rem;
+  } */
+  
+  .card {
+    width: 10rem;
+    padding: 10rem 20rem 10rem 20rem;
+    margin-top: 50rem;
+  }

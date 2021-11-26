@@ -1,0 +1,44 @@
+<div class="col-md-6">
+  <form class="row g-3" #updateAdminForm="ngForm" (ngSubmit)="updateAdmin(updateAdminForm.value)">
+    <div class="col-md-8">
+      <label for="adminId" class="form-label">Admin ID</label>
+      <input type="text" class="form-control" id="adminId" name="adminId" [ngModel]=admin?.adminId readonly>
+    </div>
+    <div class="col-md-8">
+      <label for="adminName" class="form-label">Admin Name</label>
+      <input type="text" class="form-control" id="adminName" name="name" [ngModel]=admin?.name >
+    </div>
+
+    <div class="col-12">
+      <label for="emailId" class="form-label">Email Id</label>
+      <input type="text" class="form-control" id="emailId" name="emailId" [ngModel]=admin?.emailId>
+    </div>
+    <div class="col-md-6">
+      <label for="contactNumber" class="form-label">ContactNumber </label>
+      <input type="number" class="form-control" id="contactNumber" name="contactNumber" [ngModel]=admin?.contactNumber>
+
+    </div>
+    <div class="col-12">
+      <label for="status" class="form-label">Status</label>
+      <!-- <input type="text" class="form-control" id="status" name="status" [ngModel]=admin?.status> -->
+      <select class="form-control" id="status" name="status" [ngModel]=admin?.status  >
+        <option>Select One</option>
+        <option>Admin</option>
+        <option>Customer</option>
+      </select>
+    </div>
+    
+    
+    <div class="row">
+    
+      <div class="col-md-3">
+        <br>
+      <button type="submit" [disabled]="!updateAdminForm.valid" class="btn btn-primary">Update Admin</button>
+    </div>
+      <div class=" col-md-5">
+        <br>
+      <button type="button" [disabled]="!updateAdminForm.valid" class="btn btn-danger btn btn-primary py-2 px-6"
+        (click)="cancel()">Cancel</button>
+    </div>
+    </div>
+      </form>

@@ -1,0 +1,75 @@
+<br>
+<br>
+<div *ngIf="loginService.checkLoginDetails('isUserLoggedIn') && loginService.checkLoginDetails('role') === 'Customer'" class="col-md-10 custom-products-cart-container" style="margin-left: 1000px;" >
+  <div class="dropdown">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+       <span class="fa fa-shopping-cart">
+        Products Added In Cart:
+      </span>
+      <span class="caret">{{cartProducts.length}}</span>
+    </a>
+  
+    <ul class="dropdown-menu" style="width: 250px;" aria-labelledby="dropdownMenuLink">
+      <li *ngFor="let item of cartProducts">
+        <div class="item product-cart-item row">
+          <div class="col-md-8" *ngIf="item">{{item.name}}</div>
+          <div class="col-md-4" *ngIf="item"><strong>${{item.itemQuantityPrice}}</strong></div>
+        </div>
+      </li>
+      <br>
+      <li><a class="btn btn-small btn-success " role="button" (click)="goToCart()">View Cart</a></li>
+     <br>
+      <li *ngIf="cartProducts.length > 0">
+        <a class="btn btn-small btn-warning" role="button" (click)="emptyCart()">Empty Cart</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container" >
+  <h1 style="color: darkmagenta;">{{productList}} </h1>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6">
+      <div class="form-group">
+  <input class="form-control" type="text" name="name" autocomplete="off" [(ngModel)]="name" (ngModelChange)="Search()"
+   placeholder=" search product by name and price">
+</div>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="!product" class="alert alert-danger">
+    {{error}}
+  </div>
+  <div class="table-responsive" *ngIf="product">
+  <table border="1" style="width: 100%; text-align: center;" >
+    <thead>
+      <tr>
+        <th scope="col">product Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let products of product | filter:name | paginate:{itemsPerPage:5,currentPage:p};" >
+      <tr>
+        <td>{{products.name}}</td>
+        <td>{{products.category}}</td>
+        <td>{{products.price}}</td>
+        <td>{{products.quantity}}</td>
+        <!-- loginService.checkLoginDetails('role') === 'admin'" -->
+        <td *ngIf="loginService.checkLoginDetails('role') === 'Customer'"><button type="button" class="btn btn-success"   (click)="getDetails(products.productId)">View</button> </td>
+        <td *ngIf="loginService.checkLoginDetails('role') === 'Admin'"><button type="button" class="btn btn-success fa fa-refresh" (click)="updateProduct(products)">Update</button> </td>
+        <td *ngIf="loginService.checkLoginDetails('role') === 'Admin'"><button type="button" class="btn btn-danger" (click)="deleteProduct(products.productId)">Delete</button> </td>
+      
+      </tr>
+      
+    </tbody>
+  </table>
+  <br>
+  <button type="button" *ngIf="loginService.checkLoginDetails('role') === 'Admin'" class="btn btn-primary" (click)="addProducts()">Add Products</button>
+  <br>
+  
+  <pagination-controls (pageChange)="p=$event" responsive="true"></pagination-controls>
+
+  </div>
+ </div>

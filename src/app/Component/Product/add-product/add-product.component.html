@@ -1,0 +1,73 @@
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="color: blueviolet; ">
+      {{addProduct}}
+    </div>
+    <div class="panel-body">
+      <form [formGroup]="signUpForm"   (ngSubmit)="submitData(signUpForm.value)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="productName" name="name" formControlName="name" placeholder="product Name">
+            <div  *ngIf="signUpForm.get('name').invalid && (signUpForm.get('name').dirty || signUpForm.get('name').touched)" class="alert alert-danger">
+              Product name required
+             </div> 
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+           <div class="form-group">
+             <label for="category" class="form-label">Category</label>
+             <select class="form-control" name="category" formControlName="category"   >
+              <option>Select One</option>
+              <option>fresh</option>
+              <option>new</option>
+            </select>
+            <div  *ngIf="signUpForm.get('category').invalid && (signUpForm.get('category').dirty || signUpForm.get('category').touched)" class="alert alert-danger">
+              Product category required
+             </div>
+           </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" id="price" class="form-control" formControlName="price" name="price" placeholder="Price" min="10">
+              <div  *ngIf="signUpForm.get('price').invalid && (signUpForm.get('price').dirty || signUpForm.get('price').touched)" class="alert alert-danger">
+                Product price must be positive and required
+               </div> 
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input type="number" class="form-control" formControlName="quantity" id="quantity" name="quantity" placeholder="Quantity" min="1">
+              <div  *ngIf="signUpForm.get('quantity').invalid && (signUpForm.get('quantity').dirty || signUpForm.get('quantity').touched)" class="alert alert-danger">
+                *
+               </div> 
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <button type="submit" [disabled]=!signUpForm.valid class="btn btn-primary">Add Products</button>
+        
+            </div>
+          </div>
+          <div class="col-md-2">
+          <button type="button"  class="btn btn-danger" (click)="cancel()">Cancel</button>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

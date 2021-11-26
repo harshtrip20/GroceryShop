@@ -1,0 +1,42 @@
+<div class="col-md-6">
+  <form class="row g-3" #updateProductForm="ngForm" (ngSubmit)="updateProduct(updateProductForm.value)">
+    <div class="col-md-8">
+      <label for="productId" class="form-label">Product ID</label>
+      <input type="text" class="form-control" id="productId" name="productId" [ngModel]=product?.productId readonly>
+   
+    </div>
+    <div class="col-md-8">
+      <label for="name" class="form-label">Product Name</label>
+      <input type="text" class="form-control" id="name"  name="name" [ngModel]=product?.name readonly>
+      
+    </div>
+    <div class="col-12">
+      <label for="category" class="form-label">Category</label>
+      <!-- <input type="text" class="form-control" id="category"  name="category" placeholder="Enter category"
+        [ngModel]=product?.category> -->
+        <div class="form-group" >
+          <select class="form-control" name="category" [ngModel]=product?.category  >
+            <option>Select One</option>
+            <option>fresh</option>
+            <option>new</option>
+          </select>
+          
+          </div>
+    </div>
+   
+    <div class="col-md-6">
+      <label for="price" class="form-label">Price </label>
+      <input type="number" class="form-control" id="price" name="price" [ngModel]=product?.price>
+
+    </div>
+    <div class="col-md-6">
+      <label for="quantity" class="form-label">Quantity </label>
+      <input type="number" class="form-control" id="quantity" name="quantity" [ngModel]=product?.quantity>
+    </div>
+        <div class="col-12">
+      <button type="submit" [disabled]="!updateProductForm.valid" class="btn btn-primary">Update Product</button>
+      <button type="button" [disabled]="!updateProductForm.valid" class="btn btn-danger"
+        (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  </div>

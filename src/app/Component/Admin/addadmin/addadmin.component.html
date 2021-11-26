@@ -1,0 +1,98 @@
+<div *ngIf="newProduct" class="alert alert-success">
+  Product added successfully  {{newProduct | json }} 
+</div>
+<div *ngIf="error" class="alert alert-danger">
+ {{error.error.message | json}}
+</div>
+<div class="col-md-6">
+  <form class="row g-3" [formGroup]="addAdminForm" (ngSubmit)="addAdmin()">
+    <div class="col-md-8">
+      <label for="adminName" class="form-label">Admin Name</label>
+      <input type="text" class="form-control" id="adminName" formControlName=name>
+      <!-- <div  *ngIf="addAdminForm.get('adminName').invalid && (addAdminForm.get('adminName').dirty || addAdminForm.get('adminName').touched)" class="alert alert-danger">
+        Admin Name must be given.
+      </div> -->
+      <div *ngIf="addAdminForm.controls.name.errors?.required" class="alert alert-danger">
+        Admin Name must be given.
+      </div>
+      <div *ngIf="addAdminForm.controls.name.errors?.minlength" class="alert alert-danger">
+        Admin Name must be minimum 5 characters.
+      </div>
+    </div>
+    <!-- <div class="col-12">
+      <label for="manufactoringDate" class="form-label">Manufactoring Date</label>
+      <input type="date" class="form-control" id="manufactoringDate" placeholder="Enter date" formControlName=manufactoringDate>
+
+    </div> -->
+    <!-- <div class="col-12">
+      <label for="manufactoringTime" class="form-label">Manufactoring time</label>
+      <input type="text" class="form-control" id="manufactoringTime" placeholder="Enter time" formControlName=manufactoringTime>
+    </div> -->
+    <div class="col-md-6">
+      <label for="contactNumber" class="form-label">ContactNumber </label>
+      <input type="number" class="form-control" id="contactNumber" formControlName=contactNumber>
+      <div *ngIf="addAdminForm.controls.contactNumber.errors?.required" class="alert alert-danger">
+        ContactNumber must be given.
+      </div>
+
+    </div>
+    <div class="col-md-8">
+      <label for="emailId" class="form-label">Email Id</label>
+      <input type="text" class="form-control" id="emailId" formControlName=emailId>
+      <!-- <div  *ngIf="addAdminForm.get('adminName').invalid && (addAdminForm.get('adminName').dirty || addAdminForm.get('adminName').touched)" class="alert alert-danger">
+        Admin Name must be given.
+      </div> -->
+      <div *ngIf="addAdminForm.controls.emailId.errors?.required" class="alert alert-danger">
+        Email Id must be given.
+      </div>
+    </div>
+    <div class="col-md-8">
+      <label for="status" class="form-label">Status</label>
+      <!-- <input type="text" class="form-control" id="status" formControlName=status> -->
+      <!-- <div  *ngIf="addAdminForm.get('adminName').invalid && (addAdminForm.get('adminName').dirty || addAdminForm.get('adminName').touched)" class="alert alert-danger">
+          Admin Name must be given.
+        </div> -->
+        <select class="form-control" id="status" formControlName=status   >
+          <option>Select One</option>
+          <option>Admin</option>
+          <option>Customer</option>
+        </select>
+      <div *ngIf="addAdminForm.controls.status.errors?.required" class="alert alert-danger">
+        Status Id must be given.
+      </div>
+    </div>
+
+    <!-- <div class="col-md-6">
+      <label for="discount" class="form-label">Discount </label>
+      <input type="number" class="form-control" id="discount" formControlName=discount>
+    </div> -->
+
+    <!-- <div formGroupName="address" class="col-md-6">
+    <div class="form-group" >
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputCity" formControlName=city>
+    </div>
+    <div class="form-group">
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select" formControlName=state>
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputZip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="inputZip" formControlName=pincode>
+    </div>
+  </div> -->
+  <div class="row">
+    
+    <div class="col-md-3">
+      <br>
+      <button type="submit" [disabled]="!addAdminForm.valid" class="btn btn-primary">Add Admin</button>
+      </div>
+      <div class=" col-md-5">
+        <br>
+      <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+    </div>
+    </div>
+  </form>

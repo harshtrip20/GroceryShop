@@ -1,0 +1,39 @@
+<br>
+<br>
+<br>
+<div id="conatiner">
+<div *ngIf="error" class="alert alert-danger">
+  {{error.error.message}}
+</div>
+
+  <div class="container">
+    <h1 style="text-align: center;">Login Form</h1>
+ <form #loginForm="ngForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+  
+   <div class="form-group">
+     <label for="exampleInputuserId1" class="form-label">User Name </label>
+     <em *ngIf="userId?.invalid && userId?.touched">Required</em>
+     <input type="userId" class="form-control" id="exampleInputuserId1" name="userId" ngModel #userId="ngModel" required>
+     <div *ngIf="userId?.valid && userId?.touched" class="alert alert-danger">
+       userId is not valid</div>
+   </div>
+  
+   <div class="form-group">
+     <label for="exampleInputPassword1" class="form-label">Password</label>
+     <em *ngIf="password?.invalid && password?.touched">Required</em>
+     <input type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel #password="ngModel" required>
+     <div *ngIf="!password?.valid && password?.touched "
+       class="alert alert-danger">Password is not valid</div>
+   </div>
+  
+  <br>
+   <button type="submit" [disabled]=!loginForm.valid class="btn btn-primary">Login</button>
+   <br>
+   <div>
+     <br>
+   <p><b>Note : </b>If you are a new user please Register Below</p>
+   <button type="submit"  class="btn btn-primary" (click)="signUp()">Sign Up</button>
+  </div>
+  </form>
+</div>
+</div>

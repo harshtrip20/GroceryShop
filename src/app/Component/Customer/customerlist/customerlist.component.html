@@ -1,0 +1,58 @@
+<!-- <div class="card-deck"> -->
+  
+  <!-- <div class="card text-black h-100 hoverwell thumbnail border border-success" style="width: 30rem; background-color: #e3f2fd;" [routerLink]="['/getCustomer', newCustomer.customerId]">
+ 
+    
+    <div>Customer Name : {{newCustomer.name}} </div>
+    <div>Customer contactNumber: {{newCustomer.mobileNumber}} </div>
+    <div>Customer Address: {{newCustomer.address.flatNo}} , {{newCustomer.address.buildingName}}, {{newCustomer.address.area}}, {{newCustomer.address.city}} {{newCustomer.address.pincode}}, {{newCustomer.address.state}} </div>
+    <div>Customer emailId: {{newCustomer.emailId}} </div>
+   
+  </div>
+  <button type="button" class="btn btn-danger" (click)="addCustomers()">Add Customers</button> -->
+  <!-- <div *ngIf="!newCustomer" class="alert alert-danger">
+    {{error}}
+  </div> -->
+  <!-- <div class="table-responsive"> -->
+    <table border="1" style="width:150% "  >
+      <thead >
+        <tr>
+         
+          <th scope="col">Customer Name</th>
+          <th scope="col">Customer Mobile No</th>
+          <th scope="col">Customer emailId</th>
+          <!-- <th scope="col">Customer </th> -->
+          <th scope="col"> Flat No</th>
+          <th scope="col">  Building Name</th>
+          <th scope="col"> Area</th>
+          <th scope="col"> City</th>
+          <th scope="col"> Pincode</th>
+          <th scope="col"> State</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let custNew of newCustomer ">
+        
+          <td>{{custNew.name}}</td>
+          <td>{{custNew.mobileNumber}}</td>
+          <td>{{custNew.emailId}}</td>
+          <td>{{custNew.address.flatNo}}</td>
+           <td>{{custNew.address.buildingName}}</td>
+           <td>{{custNew.address.area}} </td>
+           <td>{{custNew.address.city}}</td>
+           <td>{{custNew.address.pincode}}</td>
+            <td>{{custNew.address.state}}</td>
+            <td ><button type="button" class="btn btn-success" (click)="updateCustomer(custNew.customerId)">Update</button> </td>
+            <td ><button type="button" class="btn btn-danger" (click)="deleteCustomer(custNew.customerId)">Delete</button> </td>
+            
+         
+        </tr>
+       
+      </tbody>
+    </table>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="addCustomer()">Add Customer</button> 
+            
+    <!-- </div> -->
+  

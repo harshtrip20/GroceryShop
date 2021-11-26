@@ -1,0 +1,94 @@
+<!-- <div *ngIf="newProduct" class="alert alert-success">
+  Product added successfully  {{newProduct | json }} 
+</div> -->
+<div class="col-md-6">
+<form class="row g-3" [formGroup]="addCustomerForm" (ngSubmit)="addCustomer(addCustomerForm.value)">
+ <div class="col-md-8">
+   <label for="CustomerName" class="form-label">Customer Name</label>
+   <input type="text" class="form-control" id="customerName" formControlName=name>
+   <div  *ngIf="addCustomerForm.get('name').invalid && (addCustomerForm.get('name').dirty || addCustomerForm.get('name').touched)" class="alert alert-danger">
+     Customer Name must be given.
+   </div>  
+ </div>
+ <div class="col-md-8">
+  <label for="contactNumber" class="form-label">Contact No</label>
+  <input type="text" class="form-control" id="mobileNumber" formControlName=mobileNumber>
+  <div  *ngIf="addCustomerForm.get('mobileNumber').invalid && (addCustomerForm.get('mobileNumber').dirty || addCustomerForm.get('mobileNumber').touched)" class="alert alert-danger">
+    Customer Number must be given.
+  </div>  
+</div>
+
+<div class="col-md-8">
+  <label for="emailId" class="form-label">Customer EmailId</label>
+  <input type="text" class="form-control" id="emailId" formControlName=emailId>
+  <div  *ngIf="addCustomerForm.get('emailId').invalid && (addCustomerForm.get('emailId').dirty || addCustomerForm.get('emailId').touched)" class="alert alert-danger">
+    Email Id  must be given.
+  </div>  
+</div>
+<div class="col-md-8">
+  <label for="password" class="form-label">Password</label>
+  <input type="password" class="form-control" id="emailId" formControlName=password>
+  <div  *ngIf="addCustomerForm.get('password').invalid && (addCustomerForm.get('password').dirty || addCustomerForm.get('password').touched)" class="alert alert-danger">
+    password  must be given.
+  </div>  
+</div>
+ 
+
+ <div formGroupName="address" class="col-md-6">
+  <div class="col-md-8">
+    <label for="flatNo" class="form-label">Flat No</label>
+    <input type="text" class="form-control" id="flatNo" formControlName=flatNo>
+    <div  *ngIf="addCustomerForm.get('address.flatNo').invalid && (addCustomerForm.get('address.flatNo').dirty || addCustomerForm.get('address.flatNo').touched)" class="alert alert-danger">
+      Flat No  must be given.
+    </div>  
+  </div>
+  <div class="col-md-8">
+    <label for="buildingName" class="form-label">building Name</label>
+    <input type="text" class="form-control" id="buildingName" formControlName=buildingName>
+    <div  *ngIf="addCustomerForm.get('address.buildingName').invalid && (addCustomerForm.get('address.buildingName').dirty || addCustomerForm.get('address.buildingName').touched)" class="alert alert-danger">
+      building Name must be given.
+    </div>  
+  </div>
+  <div class="col-md-8">
+    <label for="area" class="form-label">Area</label>
+    <input type="text" class="form-control" id="area" formControlName=area>
+    <div  *ngIf="addCustomerForm.get('address.area').invalid && (addCustomerForm.get('address.area').dirty || addCustomerForm.get('address.area').touched)" class="alert alert-danger">
+      area must be given.
+    </div>  
+  </div>
+  <div class="col-md-8">
+    <label for="city" class="form-label">city</label>
+    <input type="text" class="form-control" id="area" formControlName=city>
+    <div  *ngIf="addCustomerForm.get('address.city').invalid && (addCustomerForm.get('address.city').dirty || addCustomerForm.get('address.city').touched)" class="alert alert-danger">
+      city must be given.
+    </div>  
+  </div>
+ <div class="form-group">
+   <label for="inputState" class="form-label">State</label>
+   <select id="inputState" class="form-select" formControlName=state>
+     <option selected>State1</option>
+     <option>State2</option>
+     <option>State3</option>
+   </select>
+   <div  *ngIf="addCustomerForm.get('address.state').invalid && (addCustomerForm.get('address.state').dirty || addCustomerForm.get('address.state').touched)" class="alert alert-danger">
+   State must be given.
+  </div> 
+ </div>
+ <div class="form-group">
+   <label for="inputZip" class="form-label">Zip</label>
+   <input type="text" class="form-control" id="inputZip" formControlName=pincode>
+   <div  *ngIf="addCustomerForm.get('address.pincode').invalid && (addCustomerForm.get('address.pincode').dirty || addCustomerForm.get('address.pincode').touched)" class="alert alert-danger">
+    State must be given.
+   </div> 
+ </div>
+</div>
+<div class="row">
+ <div class="col-6">
+   <button type="submit" [disabled]="!addCustomerForm.valid" class="btn btn-primary">Add Customer</button>
+   </div>
+   <div class="col-2">
+   <button type="button"  class="btn btn-danger" (click)="cancel()">Cancel</button>
+ </div>
+</div>
+</form>
+</div>

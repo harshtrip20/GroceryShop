@@ -1,0 +1,15 @@
+<div class="card h-100  hoverwell thumbnail border border-info" style="width: 30rem; background-color: #e3f2fd;">
+ 
+  <div>Customer Name : {{newCustomer.name}} </div>
+  <div>Customer contactNumber: {{newCustomer.mobileNumber}} </div>
+  <div>Customer Address: {{newCustomer.address.flatNo}} , {{newCustomer.address.buildingName}}, {{newCustomer.address.area}}, {{newCustomer.address.city}} {{newCustomer.address.pincode}}, {{newCustomer.address.state}} </div>
+  <div>Customer emailId: {{newCustomer.emailId}} </div>
+ 
+  <div class="row g-3">
+   
+    <div class=" offset-1 cols-md-6">
+         <button class="btn btn-success" (click)="getCustomer(newCustomer.customerId)">Update</button>
+    </div>
+</div>
+  
+</div>

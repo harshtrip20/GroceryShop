@@ -1,0 +1,47 @@
+<div class="col-md-6">
+  <form class="row g-3" #updateCustomerForm="ngForm" (ngSubmit)="updateCustomer(updateCustomerForm.value)">
+    <div class="col-md-8">
+      <label for="customerId" class="form-label">Customer ID</label>
+      <input type="text" class="form-control" id="customerId" name="customerId" [ngModel]=customer?.customerId readonly>
+    </div>
+    <div class="col-md-8">
+      <label for="customerName" class="form-label">Custommer Name</label>
+      <input type="text" class="form-control" id="customerName" name="name" [ngModel]=customer?.name readonly>
+    </div>
+
+    <div class="col-12">
+      <label for="emailId" class="form-label">Email Id</label>
+      <input type="text" class="form-control" id="emailId" name="emailId" [ngModel]=customer?.emailId>
+    </div>
+    <div class="col-md-6">
+      <label for="mobileNumber" class="form-label">Mobile Number </label>
+      <input type="number" class="form-control" id="mobileNumber" name="mobileNumber" [ngModel]=customer?.mobileNumber>
+
+    </div>
+
+    <div class="col-md-6">
+ <div class="form-group" >
+   <label for="inputCity" class="form-label">City</label>
+   <input type="text" class="form-control" id="inputCity" name="city" [ngModel]=customer?.address.city >
+ </div>
+ <div class="form-group">
+   <label for="inputState" class="form-label">State</label>
+   <select id="inputState" class="form-select"  name="state" [ngModel]=customer?.address.state >
+     <option selected>State1</option>
+     <option>State2</option>
+     <option>State3</option>
+   </select>
+ </div>
+ <div class="form-group">
+   <label for="inputZip" class="form-label">Zip</label>
+   <input type="text" class="form-control" id="inputZip" name="pincode" [ngModel]=customer?.address.pincode  >
+ </div>
+</div>
+   
+    <div class="col-12">
+      <button type="submit" [disabled]="!updateCustomerForm.valid" class="btn btn-primary">Update Customer</button>
+      <button type="button" [disabled]="!updateCustomerForm.valid" class="btn btn-primary"
+        (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  </div>

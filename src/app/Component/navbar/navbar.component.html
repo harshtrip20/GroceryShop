@@ -1,0 +1,58 @@
+<div class="py-1 bg-primary">
+  <div class="container">
+    <div class="row upper-tab">
+      <div class="col-sm"> <span class="text topper"><i class="fa fa-phone-alt"></i>+331 92114209211</span>
+      </div>
+      <div class="col-sm"><span class="text topper"><i class="fa fa-envelope"></i>grocerywale@info.com</span>
+      </div>
+      <div class="col-sm"><span class="text topper">3-5 Business days delivery &amp; Free Returns</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand for-hover" [routerLink]="['/home']">Grocery Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="!loginService.checkLoginDetails('isUserLoggedIn')" style="margin-left: 1000px;"><button  class="btn btn-info" [routerLink]="['/login']" routerLinkActive="active"
+      data-hover="Login" >Login</button></div>
+     
+    <div class="collapse navbar-collapse" id="navbarNav" >
+      <div *ngIf="loginService.checkLoginDetails('isUserLoggedIn') && loginService.checkLoginDetails('role') === 'Admin'">
+    
+        <ul class="navbar-nav menu-4">
+         
+          <li class="nav-item"><a [routerLink]="['/alladmins']" routerLinkActive="active"
+            data-hover="Admin">Admin</a></li>
+
+            <li class="nav-item"><a [routerLink]="['/allCustomer']" routerLinkActive="active"
+              data-hover="Customer">Customer</a></li>
+          <li class="nav-item" >
+            {{loginService.checkLoginDetails('userId') | lowercase}}<button class="btn btn-primary btn-sm fa fa-sign-out" [routerLink]="['/logout']"> Logout </button>
+          </li>
+         
+        </ul>
+      </div>
+
+      <div *ngIf="loginService.checkLoginDetails('isUserLoggedIn') && loginService.checkLoginDetails('role') === 'Customer'">
+        <ul class="navbar-nav menu-4">
+      
+            <li class="nav-item" >
+              <a  [routerLink]="['/cart']" data-hover="Cart"> Cart </a>
+            </li>
+          <li class="nav-item">
+            {{loginService.checkLoginDetails('userId')  | lowercase}}<button class="btn btn-primary btn-sm fa fa-sign-out" [routerLink]="['/logout']"> Logout </button>
+          </li>
+        </ul>
+       
+      </div>
+
+    </div>
+  </div>
+</nav>
+<br>
+<!--***************************-->
